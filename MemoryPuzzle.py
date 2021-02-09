@@ -92,3 +92,4 @@ def main():
                 else: # the current box was the second box clicked
                     # check if there is a match between the two icons
                     icon1shape, icon1color = getShapeAndColor(mainBoard, firstSelection[0], firstSelection[1]) 
+                    icon2shape, icon2color = getShapeAndColor(mainBoard, boxx, boxy)
