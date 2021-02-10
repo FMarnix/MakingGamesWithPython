@@ -93,3 +93,32 @@ def main():
                     # check if there is a match between the two icons
                     icon1shape, icon1color = getShapeAndColor(mainBoard, firstSelection[0], firstSelection[1]) 
                     icon2shape, icon2color = getShapeAndColor(mainBoard, boxx, boxy)
+
+                    if icon1shape != icon2shape or icon1color != icon2color:
+                        #icons don't match. Re-cover up both selections.
+                        pygame.time.wait(1000) # 1000 miliseconds = 1 sec
+                        coverBoxesAnimation(mainBoard, [(firstSelection[0], firstSelection[1]),(boxx, boxy)])
+                        revealedBoxes[firstSelection[0]][firstSelection[1]] = False
+                        revealedBoxes[boxx, boxy] = False
+                    elif hasWon(revealedBoxes): #check if all pairs found
+                        gameWonAnimation(mainBoard)
+                        pygame.time.wait(2000)
+
+                        # Reset the board
+                        mainBoard = getRandomizeBoard()
+                        revealedBoxes = generateRevealedBoxesData(False)
+
+                        #Show the fully urevealed board for a second.
+                        drawBoard(mainBoard, revealedBoxes)
+                        pygame.display.update()
+                        pygame.time.wait(1000)
+
+                        # Replay the start game animation.
+                        startGameAnimation(mainBoard)
+                    firstSelection = None # Reset firstSelection variable
+
+        #  Redraw the screen and wait a clock tick.
+        pygame.display.update()
+        FPSCLOCK.tick(FPS)
+
+
