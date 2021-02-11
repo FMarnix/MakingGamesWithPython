@@ -122,3 +122,17 @@ def main():
         FPSCLOCK.tick(FPS)
 
 
+def generateRevealedBoxesData(val):
+    revealedBoxes = []
+    for i in range(BOARDWIDTH):
+        revealedBoxes.append([val] * BOARDHEIGHT)
+    return revealedBoxes
+
+
+def getRandomizeBoard():
+    # Get a list if every possible shape in every possible color.
+    icons = []
+    for colors in ALLCOLORS:
+        for shape in ALLSHAPES:
+            icons.append((shape, color))
+
