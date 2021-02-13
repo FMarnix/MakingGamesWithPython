@@ -136,3 +136,18 @@ def getRandomizeBoard():
         for shape in ALLSHAPES:
             icons.append((shape, color))
 
+    random.shuffle(icons) #  randomize the order of the icons list
+    numIconsUsed = int(BOARDWIDTH * BOARDHEIGHT / 2) # calculate how many icons are needed
+    icons = icons[:numIconsUsed] * 2 # make two of each
+    random.shuffle(icons)
+
+    # create the board data structure, with randomly placed icons.
+    board = []
+    for x in range(BOARDWIDTH):
+        column = []
+        for y in range(BOARDHEIGHT):
+            column.append(icons[0])
+            del icons[0] # remove the icons as we assign them
+        board.append(column)
+    return board
+
