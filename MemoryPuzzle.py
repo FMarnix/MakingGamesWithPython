@@ -168,3 +168,22 @@ def leftTopCoordsOfBox(boxx, boxy):
     return(left, top)
 
 
+def getBoxAtPixel(x, y):
+    for boxx in range(BOARDWIDTH):
+        for boxy in range(BOARDHEIGHT):
+            left, top = leftTopCoordsBox(boxx, boxy)
+            boxRect = pygame.Rect(left, top, BOXSIZE, BOXSIZE)
+            if boxRect.collidepoint(x, y):
+                return(boxx, boxy)
+    return(None, None)
+
+
+def drawIcon(shape, color, boxx, boxy): 
+    quarter = int(BOXSIZE * 0.25) # synthatic sugar
+    half = int(BOXSIZE * 0.5) # synthatic sugar
+
+    left, top = leftTopCoordsOfBox(boxx, boxy) # get pixel coords from board coords
+    # Draw the shapes
+    if shape == DONUT:
+        pygame.draw.circle(DISPLAYSURF, color, (left + half, top + half), half - 5)
+        pygame.draw.circle(DISPLAYSURF, BGCOLOR, (left + half, top + half), quarter  5)
