@@ -186,4 +186,5 @@ def drawIcon(shape, color, boxx, boxy):
     # Draw the shapes
     if shape == DONUT:
         pygame.draw.circle(DISPLAYSURF, color, (left + half, top + half), half - 5)
-        pygame.draw.circle(DISPLAYSURF, BGCOLOR, (left + half, top + half), quarter  5)
+        pygame.draw.circle(DISPLAYSURF, BGCOLOR, (left + half, top + half), quarter - 5)
+
