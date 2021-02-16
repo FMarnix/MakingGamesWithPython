@@ -151,3 +151,20 @@ def getRandomizeBoard():
         board.append(column)
     return board
 
+
+def splitIntoGroupsOf(groupSize, theList):
+    #splits a list into a list of lists, where the inner lists have at
+    # most groupSize number of items.
+    result = []
+    for i in range(0, len(theList), groupSize):
+        result.append(theList[i: + groupSize])
+    return result
+
+
+def leftTopCoordsOfBox(boxx, boxy):
+    # convert board coordinates to pixel coordinates.
+    left = boxx * (BOXSIZE + GAPSIZE) + XMARGIN
+    top = boxy * (BOXSIZE + GAPSIZE) + YMARGIN
+    return(left, top)
+
+
