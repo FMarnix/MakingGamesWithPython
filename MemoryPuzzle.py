@@ -199,3 +199,11 @@ def drawIcon(shape, color, boxx, boxy):
         pygame.draw.line(DISPLAYSURF, color, (left, top + quarter, BOXSIZE, half))
 
 
+def getShapeAndColor(board, boxx, boxy):
+    # shape value for x, y spot is stored in board[x][y][0]
+    # color value for x, y spot is stored in board[x][y][0]
+    return board[boxx][boxy][0], board[boxx][boxy][1]
+
+
+def drawBoxCovers(board, boxes, coverage):
+    
