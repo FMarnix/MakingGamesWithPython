@@ -219,3 +219,30 @@ def drawBoxCovers(board, boxes, coverage):
     FPSCLOCK.tick(FPS)
 
 
+def revealedBoxesAnimation(board, boxesToReveal):
+    # Do the "box reveal" animation
+    for coverage in range(BOXSIZE, (-REVEALSPEED) - 1, - REVEALSPEED):
+        drawBoxCovers(board, boxesToReveal, coverage)
+
+
+def coverBoxesAnimation(board, boxesToCover):
+    # Do the "box cover" animation
+    for coverage in range(0, BOXSIZE + REVEALSPEED, REVEALSPEED):
+        drawBoxCovers(board, boxesToCover, coverage)
+
+
+def drawBoard(board, revealed):
+    # Draws all of the boxes in their covered or revealed state.
+    for boxx in range(BOARDWIDTH):
+        for boxy in range(BOARDHEIGHT):
+            left, top = leftTopCoordsOfBox(boxx, boxy)
+            if not revealed[boxx][boxy]:
+                # Draw a covered box.
+                pygame.draw.rect(DISPLAYSURF, BOXCOLOR, (left, toop, BOXSIZE, BOXSIZE))
+                else:
+                    # Draw the (revealed) icon
+                    shape, color = getShapeAndColor(board, boxx, boxy)
+                    drawIcon(shape, color, boxx, boxy)
+
+
+                    
