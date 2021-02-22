@@ -43,7 +43,7 @@ OVAL = 'oval'
 
 ALLCOLORS = (RED, GREEN, YELLOW, ORANGE, PURPLE, CYAN)
 ALLSHAPES = (DONUT, SQUARE, DIAMOND, LINES, OVAL)
-assert len(ALLCOLORS) * LEN(ALLSHAPES) * 2>= BOARDWIDTH * BOARDHEIGHT, "Board is too big for the number of shapes/colors defined."
+assert len(ALLCOLORS) * len(ALLSHAPES) * 2>= BOARDWIDTH * BOARDHEIGHT, "Board is too big for the number of shapes/colors defined."
 
 def main():
     global FPSCLOCK, DISPLAYSURF
